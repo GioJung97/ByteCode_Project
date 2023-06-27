@@ -1,7 +1,7 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Name here
+## Student Name  : Gio Jung
 
-## Student ID    : ID here
+## Student ID    : 917160535
 
-## Student Email : Email here
+## Student Email : gjung1@sfsu.edu
