@@ -1,9 +1,7 @@
 package interpreter.virtualmachine;
 
-import java.util.ArrayList;
-import java.util.EmptyStackException;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class RunTimeStack {
 
@@ -26,9 +24,21 @@ class RunTimeStack {
      * Frame pointers would be 0,3,6
      */
     public String dump() {
+        StringBuilder sb = new StringBuilder();
 
+        for (int i = 0; i < framePointer.size(); i++) {
+            int start = framePointer.get(i);
+            int end = (i == framePointer.size() - 1) ? runTimeStack.size() : framePointer.get(i + 1);
+            List<Integer> frame = runTimeStack.subList(start, end);
 
-        return null;
+            sb.append(frame.toString());
+
+            if (i != framePointer.size() - 1) {
+                sb.append(" ");
+            }
+        }
+
+        return sb.toString();
     }
 
     /**
@@ -72,10 +82,10 @@ class RunTimeStack {
      * * @return the item just stored
      */
     public int store(int offsetFromFramePointer){
-        runTimeStack.remove(this.framePointer.peek() + offsetFromFramePointer);
-        this.runTimeStack.add(this.framePointer.peek() + offsetFromFramePointer, this.peek());
 
-        return this.runTimeStack.get(framePointer.peek() + offsetFromFramePointer);
+        this.runTimeStack.set(this.framePointer.peek() + offsetFromFramePointer, this.peek());
+
+        return this.runTimeStack.get(this.framePointer.peek() + offsetFromFramePointer);
     }
 
     /**
@@ -91,14 +101,14 @@ class RunTimeStack {
 
         return this.peek();
     }
-    
+
     /**
      * create a new frame pointer at the index offset slots down
      * from the top of the runtime stack.
      * @param "offset" slots down from the top of the runtime stack
      * */
     public void newFrameAt(int offsetFromTopOfRunStack) {
-        this.framePointer.add(offsetFromTopOfRunStack);
+        this.framePointer.add(this.runTimeStack.size() - 1 - offsetFromTopOfRunStack);
     }
 
     /**
@@ -107,9 +117,9 @@ class RunTimeStack {
      */
     public void popFrame(){
 
-//        for(int i=0; i<framePointer.get(framePointer.size() - 1) - framePointer.get(framePointer.size() - 2); i++){
-//            this.runTimeStack.remove(this.runTimeStack.size() - 1);
-//        }
+        for(int i = 0; i < this.runTimeStack.size() - this.framePointer.peek(); i++){
+            this.runTimeStack.remove(this.runTimeStack.size() - 1);
+        }
 
         this.framePointer.pop();
     }
@@ -123,9 +133,10 @@ class RunTimeStack {
         rts.push(4);
         rts.push(5);
 
-        rts.store(2);
+        rts.newFrameAt(2);
 
-        System.out.println(rts.peek());
+
+        System.out.println(rts.dump());
 
 //        rts.store(2);
 //        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
