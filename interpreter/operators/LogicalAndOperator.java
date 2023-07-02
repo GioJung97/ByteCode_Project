@@ -2,7 +2,7 @@ package interpreter.operators;
 
 import interpreter.Operand;
 
-public class OpenParanOperator extends Operator {
+public class LogicalAndOperator extends Operator {
     @Override
     public int priority() {
         return 0;

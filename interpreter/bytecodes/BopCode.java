@@ -1,6 +1,7 @@
 package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
+import interpreter.Operand;
 
 
 public class BopCode implements ByteCode {
@@ -16,11 +17,6 @@ public class BopCode implements ByteCode {
         int operand1 = vm.pop();
         int operand2 = vm.pop();
 
-        switch(this.operator){
-            case "+":
-                vm.push(operand1 + operand2);
-            case "-":
-                vm.push()
-        }
+
     }
 }

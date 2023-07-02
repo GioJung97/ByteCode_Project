@@ -2,7 +2,7 @@ package interpreter.operators;
 
 import interpreter.Operand;
 
-public class CloseParenOperator extends Operator {
+public class LessThanOperator extends Operator {
     @Override
     public int priority() {
         return 0;
