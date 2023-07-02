@@ -13,7 +13,7 @@ public class Program {
      * ArrayList
      */
     public Program() {
-
+        this.program = new ArrayList<>();
     }
 
     /**
@@ -21,7 +21,7 @@ public class Program {
      * @return size of program
      */
     public int getSize() {
-        return 0;
+        return this.program.size();
     }
 
     /**

@@ -28,5 +28,4 @@ public class LitCode implements ByteCode {
         }
         return base;
     }
-
 }

@@ -1,5 +1,7 @@
 package interpreter.virtualmachine;
 
+import interpreter.loaders.InvalidProgramException;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -81,11 +83,16 @@ class RunTimeStack {
      * @param "offset" number of slots above current frame marker
      * * @return the item just stored
      */
-    public int store(int offsetFromFramePointer){
+    public int store(int offsetFromFramePointer) /*throws InvalidProgramException*/ {
+
+//        if(offsetFromFramePointer == this.runTimeStack.size() - 1 - this.framePointer.peek()){
+//            throw new InvalidProgramException("Top of Stack is not allowed to be stored.");
+//        }
 
         this.runTimeStack.set(this.framePointer.peek() + offsetFromFramePointer, this.peek());
 
-        return this.runTimeStack.get(this.framePointer.peek() + offsetFromFramePointer);
+
+        return this.runTimeStack.remove(this.runTimeStack.size() - 1);
     }
 
     /**
@@ -124,8 +131,11 @@ class RunTimeStack {
         this.framePointer.pop();
     }
 
+    public int currFrameSize(){
+        return this.runTimeStack.size() - this.framePointer.peek();
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) /*throws InvalidProgramException*/ {
         RunTimeStack rts = new RunTimeStack();
         rts.push(2);
         rts.push(3);
@@ -138,8 +148,8 @@ class RunTimeStack {
 
         System.out.println(rts.dump());
 
-//        rts.store(2);
-//        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
+        rts.store(1);
+        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
     }
 }
 
