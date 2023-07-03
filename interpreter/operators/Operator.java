@@ -1,7 +1,6 @@
 package interpreter.operators;
 
 import interpreter.InvalidTokenException;
-import interpreter.Operand;
 import java.util.HashMap;
 
 public abstract class Operator {
@@ -25,11 +24,11 @@ public abstract class Operator {
 
    }
 
-    /**
-     * retrieve the priority of an Operator
-     * @return priority of an Operator as an int
-     */
-    public abstract int priority();
+//    /**
+//     * retrieve the priority of an Operator
+//     * @return priority of an Operator as an int
+//     */
+//    public abstract int priority();
 
     /**
      * Abstract method to execute an operator given two operands.
@@ -37,7 +36,7 @@ public abstract class Operator {
      * @param operandTwo second operand of operator
      * @return an operand of the result of the operation.
      */
-    public abstract Operand execute(Operand operandOne, Operand operandTwo);
+    public abstract int execute(int operandOne, int operandTwo);
 
     /**
      * used to retrieve an operator from our HashMap.
@@ -78,9 +77,6 @@ public abstract class Operator {
                 return operators.get("&");
             case "|":
                 return operators.get("|");
-
-
-
         }
 
         return operators.get(token);
@@ -97,11 +93,4 @@ public abstract class Operator {
         return token.matches(".*[+\\-*/^].*");
     }
 
-    //test if it works properly
-    public static void main(String[] args) {
-        Operand operandOne = new Operand("1");
-        Operand operandTwo = new Operand("2");
-        Operator x = Operator.getOperator("+");
-        System.out.println(x.execute(operandOne,operandTwo).getValue());
-    }
 }

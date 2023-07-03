@@ -1,15 +1,17 @@
 package interpreter.operators;
 
-import interpreter.Operand;
-
 public class LessThanOperator extends Operator {
-    @Override
-    public int priority() {
-        return 0;
-    }
+//    @Override
+//    public int priority() {
+//        return 0;
+//    }
 
     @Override
-    public Operand execute(Operand operandOne, Operand operandTwo) {
-        return null;
+    public int execute(int operandOne, int operandTwo) {
+        if(operandOne < operandTwo){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
