@@ -11,6 +11,7 @@ public class VirtualMachine {
     private Program        program;
     private int            programCounter;
     private boolean        isRunning;
+    boolean isDumping;
 
     public VirtualMachine(Program program) {
         this.program = program;
@@ -51,8 +52,20 @@ public class VirtualMachine {
         return this.programCounter;
     }
 
+    public boolean setDumping(String onAndOff){
+        if("ON" == onAndOff.toUpperCase()){
+            return isDumping = true;
+        }else{
+            return isDumping = false;
+        }
+    }
+
     public void setProgramCounter(int programCounter) {
         this.programCounter = programCounter;
+    }
+
+    public String currFrameDump(){
+        return this.runTimeStack.currFrameDump();
     }
 
     public void executeProgram() {
@@ -60,6 +73,12 @@ public class VirtualMachine {
 
         while (isRunning){
             ByteCode code = program.getCode(programCounter);
+            //if dumping is on, print out the code, print out the runtime dump
+            if(isDumping){
+                System.out.println(code);
+                System.out.println(this.runTimeStack.dump());
+            }
+
             code.execute(this);
             programCounter++;
         }

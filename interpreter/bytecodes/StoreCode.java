@@ -1,6 +1,5 @@
 package interpreter.bytecodes;
 
-import interpreter.virtualmachine.Program;
 import interpreter.virtualmachine.VirtualMachine;
 
 public class StoreCode implements ByteCode {
@@ -20,6 +19,16 @@ public class StoreCode implements ByteCode {
     public void execute(VirtualMachine vm) {
         vm.store(offset);
     }
+
+//    @Override
+//    public String toString() {
+//        VirtualMachine vm = new VirtualMachine();
+//        String base = "STORE " + this.offset;
+//        if (this.id != null){
+//            base += " " + this.id + "\t" + this.id + "=" + vm.store(offset);
+//        }
+//        return base;
+//    }
 
     public String toStrings(VirtualMachine vm){
         String base = "STORE " + this.offset;

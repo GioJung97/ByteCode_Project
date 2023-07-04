@@ -135,6 +135,19 @@ class RunTimeStack {
         return this.runTimeStack.size() - this.framePointer.peek();
     }
 
+    public String currFrameDump(){
+        StringBuilder sb = new StringBuilder("(");
+        for (int j = framePointer.peek(); j < runTimeStack.size(); j++) {
+            sb.append(runTimeStack.get(j));
+            if (j != runTimeStack.size() - 1) {
+                sb.append(",");
+            }
+        }
+        sb.append(")");
+
+        return sb.toString();
+    }
+
     public static void main(String[] args) /*throws InvalidProgramException*/ {
         RunTimeStack rts = new RunTimeStack();
         rts.push(2);
@@ -146,10 +159,10 @@ class RunTimeStack {
         rts.newFrameAt(2);
 
 
-        System.out.println(rts.dump());
+        System.out.println(rts.currFrameDump());
 
-        rts.store(1);
-        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
+//        rts.store(1);
+//        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
     }
 }
 

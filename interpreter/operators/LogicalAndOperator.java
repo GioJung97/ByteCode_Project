@@ -1,13 +1,13 @@
 package interpreter.operators;
 
 public class LogicalAndOperator extends Operator {
-//    @Override
-//    public int priority() {
-//        return 0;
-//    }
 
     @Override
     public int execute(int operandOne, int operandTwo) {
-        return 1;
+        if (operandOne == 1 && operandTwo == 1) {
+            return 1;
+        }
+        return 0;
     }
+
 }

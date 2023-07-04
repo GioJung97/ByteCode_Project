@@ -13,7 +13,6 @@ public class PopCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        //numAmountToPop cannot be greater than the current Frame size
         if(numAmountToPop > vm.currFrameSize()){
             this.numAmountToPop = vm.currFrameSize();
         }

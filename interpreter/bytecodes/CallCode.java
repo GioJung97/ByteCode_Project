@@ -21,12 +21,12 @@ public class CallCode implements ByteCode {
 
         vm.pushToReturnAddress();
         vm.setProgramCounter(pc);
+
     }
 
     @Override
     public String toString() {
-        String base = "CALL" + id + "\t" + id.charAt(0) + "(" + /*
-        argVal number of Top of runTimeStack (reverse order)  + */ ")";
+        String base = "CALL" + id + "\t" + id.charAt(0) + "(" + ")";
 
         return base;
     }

@@ -4,6 +4,7 @@ import interpreter.bytecodes.ByteCode;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Program {
 
     private List<ByteCode> program;
@@ -30,7 +31,7 @@ public class Program {
      * @return a bytecode.
      */
     public ByteCode getCode(int programCounter) {
-        return null;
+        return this.program.get(programCounter);
     }
 
     /**
@@ -38,12 +39,12 @@ public class Program {
      * @param c bytecode to be added
      */
     public void addByteCode(ByteCode c) {
-
+        this.program.add(c);
     }
 
     /**
      * Makes multiple passes through the program ArrayList resolving
-     * addrss for Goto,Call and FalseBranch bytecodes. These bytecodes
+     * address for Goto,Call and FalseBranch bytecodes. These bytecodes
      * can only jump to Label codes that have a matching label value.
      * HINT: make note of what type of data-structure ByteCodes are stored in.
      * **** METHOD SIGNATURE CANNOT BE CAHNGED *****
