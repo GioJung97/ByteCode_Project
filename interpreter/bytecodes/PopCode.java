@@ -24,7 +24,7 @@ public class PopCode implements ByteCode {
 
     @Override
     public String toString() {
-        String base = "POP\t" + this.numAmountToPop;
+        String base = "POP " + this.numAmountToPop;
 
         return base;
     }

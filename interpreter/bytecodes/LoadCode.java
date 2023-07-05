@@ -21,7 +21,7 @@ public class LoadCode implements ByteCode {
 
     @Override
     public String toString() {
-        String base = "LIT" + this.offset;
+        String base = "LOAD " + this.offset;
         if(this.id != null){
             base += " " + this.id + "\tload " + this.id;
         }

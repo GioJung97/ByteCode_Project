@@ -1,8 +1,9 @@
 package interpreter.virtualmachine;
 
-import interpreter.bytecodes.ByteCode;
+import interpreter.bytecodes.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Program {
@@ -50,6 +51,35 @@ public class Program {
      * **** METHOD SIGNATURE CANNOT BE CAHNGED *****
      */
     public void resolveAddress() {
+        HashMap <String, Integer> pass = new HashMap();
+
+        for(int i=1; i<getSize(); i++){
+            if(getCode(i).toString().startsWith("LABEL")){
+                String [] param = getCode(i).toString().split(" ");
+                String secondParam = param[1];
+                pass.put(secondParam, i);
+            }
+        }
+
+        for(int i=1; i<getSize(); i++){
+            ByteCode byteCode = this.program.get(i);
+                if(byteCode instanceof GotoCode){
+                    GotoCode gotoCode = (GotoCode) byteCode;
+                    String label = gotoCode.getId();
+                    int gotoValue = pass.get(label);
+                    gotoCode.setLocation(gotoValue);
+                }else if(byteCode instanceof FalseBranchCode){
+                    FalseBranchCode falseBranchCode = (FalseBranchCode) byteCode;
+                    String label = falseBranchCode.getId();
+                    int falseBranchValue = pass.get(label);
+                    falseBranchCode.setLocation(falseBranchValue);
+                }else if(byteCode instanceof CallCode){
+                    CallCode callCode = (CallCode) byteCode;
+                    String label = callCode.getId();
+                    int callValue = pass.get(label);
+                    callCode.setLocation(callValue);
+                }
+        }
 
     }
 }

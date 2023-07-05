@@ -39,7 +39,9 @@ public final class ByteCodeLoader {
             ByteCode bc;
             program = new Program();
 
-            for (line = reader.readLine(); reader.ready(); line = reader.readLine()) {
+
+            while (reader.ready()){
+                line = reader.readLine();
                 items = line.split("\\s+");
 //                System.out.println(Arrays.toString(items));
                 byteCodeName = items[0];

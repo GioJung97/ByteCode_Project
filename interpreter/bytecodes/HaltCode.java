@@ -8,11 +8,6 @@ public class HaltCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        //make vm hold (don't use system.exit)
-    }
-
-    @Override
-    public String toString() {
-        return null;
+        vm.setRunning(false);
     }
 }

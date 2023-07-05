@@ -6,6 +6,7 @@ public class StoreCode implements ByteCode {
 
     private String id;
     private int offset;
+    private int storedOffset;
 
     public StoreCode(String[] args) {
         this.offset = Integer.parseInt(args[1]);
@@ -15,25 +16,25 @@ public class StoreCode implements ByteCode {
         }
     }
 
+    public void setStoredOffset(int storedOffset) {
+        this.storedOffset = storedOffset;
+    }
+
+    public int getStoredOffset() {
+        return this.storedOffset;
+    }
+
     @Override
     public void execute(VirtualMachine vm) {
         vm.store(offset);
+        setStoredOffset(vm.store(offset));
     }
 
-//    @Override
-//    public String toString() {
-//        VirtualMachine vm = new VirtualMachine();
-//        String base = "STORE " + this.offset;
-//        if (this.id != null){
-//            base += " " + this.id + "\t" + this.id + "=" + vm.store(offset);
-//        }
-//        return base;
-//    }
-
-    public String toStrings(VirtualMachine vm){
+    @Override
+    public String toString() {
         String base = "STORE " + this.offset;
         if (this.id != null){
-            base += " " + this.id + "\t" + this.id + "=" + vm.store(offset);
+            base += " " + this.id + "\t" + this.id + "=" + getStoredOffset();
         }
         return base;
     }

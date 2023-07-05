@@ -32,6 +32,10 @@ public class VirtualMachine {
         return this.runTimeStack.pop();
     }
 
+    public void popCurrFrameAndRTS(){
+        this.runTimeStack.popFrame();
+    }
+
     public int peek(){
         return this.runTimeStack.peek();
     }
@@ -53,11 +57,10 @@ public class VirtualMachine {
     }
 
     public boolean setDumping(String onAndOff){
-        if("ON" == onAndOff.toUpperCase()){
-            return isDumping = true;
-        }else{
-            return isDumping = false;
+        if("ON".equals(onAndOff)){
+            isDumping = true;
         }
+        return isDumping;
     }
 
     public void setProgramCounter(int programCounter) {
@@ -86,5 +89,13 @@ public class VirtualMachine {
 
     public void pushToReturnAddress() {
         this.returnAddress.push(programCounter);
+    }
+
+    public int popReturnAddress(){
+        return returnAddress.pop();
+    }
+
+    public void setRunning(boolean isRunning){
+        this.isRunning = isRunning;
     }
 }

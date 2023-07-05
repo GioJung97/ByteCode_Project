@@ -17,6 +17,6 @@ public class ArgsCode implements ByteCode {
 
     @Override
     public String toString() {
-        return "ARGS" + valueOfNewFramePointer;
+        return "ARGS " + valueOfNewFramePointer;
     }
 }

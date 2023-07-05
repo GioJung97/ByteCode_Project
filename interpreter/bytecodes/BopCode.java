@@ -24,6 +24,6 @@ public class BopCode implements ByteCode {
 
     @Override
     public String toString() {
-        return "BOP" + operator;
+        return "BOP " + operator;
     }
 }

@@ -115,7 +115,7 @@ class RunTimeStack {
      * @param "offset" slots down from the top of the runtime stack
      * */
     public void newFrameAt(int offsetFromTopOfRunStack) {
-        this.framePointer.add(this.runTimeStack.size() - 1 - offsetFromTopOfRunStack);
+        this.framePointer.add(this.runTimeStack.size() - offsetFromTopOfRunStack);
     }
 
     /**
@@ -150,16 +150,20 @@ class RunTimeStack {
 
     public static void main(String[] args) /*throws InvalidProgramException*/ {
         RunTimeStack rts = new RunTimeStack();
-        rts.push(2);
-        rts.push(3);
-        rts.push(1);
-        rts.push(4);
-        rts.push(5);
+//        rts.push(2);
+//        rts.push(3);
+//        rts.push(1);
+//        rts.push(4);
+//        rts.push(5);
 
-        rts.newFrameAt(2);
+//        rts.newFrameAt(1);
 
 
-        System.out.println(rts.currFrameDump());
+        System.out.println(rts.dump());
+
+        rts.newFrameAt(0);
+        System.out.println(rts.dump());
+
 
 //        rts.store(1);
 //        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
