@@ -123,12 +123,12 @@ class RunTimeStack {
      * the frame pointer value from the FramePointer Stack
      */
     public void popFrame(){
+        int stop = this.runTimeStack.size() - this.framePointer.pop();
 
-        for(int i = 0; i < this.runTimeStack.size() - this.framePointer.peek(); i++){
+        for(int i = 0; i < stop; i++){
             this.runTimeStack.remove(this.runTimeStack.size() - 1);
         }
 
-        this.framePointer.pop();
     }
 
     public int currFrameSize(){
@@ -158,9 +158,11 @@ class RunTimeStack {
 
 
 
-        rts.newFrameAt(2);
+        rts.newFrameAt(1);
 
-        rts.load(1);
+//        rts.load(1);
+        System.out.println(rts.dump());
+        rts.popFrame();
         System.out.println(rts.dump());
 
 

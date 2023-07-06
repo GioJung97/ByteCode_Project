@@ -8,7 +8,7 @@ public class WriteCode implements ByteCode, dumpable {
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.peek();
+        System.out.println(vm.peek());
     }
 
     @Override

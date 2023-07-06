@@ -41,7 +41,8 @@ public class ReturnCode implements ByteCode, dumpable {
         String base = "RETURN";
 
         if (id != null){
-             base += " " + id + "\t EXIT " + id.charAt(0) + " : " + getRetVal();
+            int endId = id.indexOf("<<");
+             base += " " + id + "  EXIT " + id.substring(0, endId) + " : " + getRetVal();
         }
         return base;
     }

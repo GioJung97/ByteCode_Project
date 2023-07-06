@@ -13,11 +13,12 @@ public class PopCode implements ByteCode, dumpable {
 
     @Override
     public void execute(VirtualMachine vm) {
+        int maxNum = this.numAmountToPop;
         if(numAmountToPop > vm.currFrameSize()){
-            this.numAmountToPop = vm.currFrameSize();
+            maxNum = vm.currFrameSize();
         }
 
-        for(int i=0; i<numAmountToPop; i++){
+        for(int i=0; i<maxNum; i++){
             vm.pop();
         }
     }
