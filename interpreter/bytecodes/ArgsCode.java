@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class ArgsCode implements ByteCode {
+public class ArgsCode implements ByteCode, dumpable {
 
     private int valueOfNewFramePointer;
 
@@ -12,7 +12,7 @@ public class ArgsCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.pushToNewFrame(valueOfNewFramePointer);
+        vm.pushToNewFrame(valueOfNewFramePointer - 1);
     }
 
     @Override

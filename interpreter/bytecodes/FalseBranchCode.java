@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class FalseBranchCode implements ByteCode {
+public class FalseBranchCode implements ByteCode, dumpable, jumpable {
 
     private String id;
     private int location;
@@ -21,16 +21,17 @@ public class FalseBranchCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        LabelCode callPC = new LabelCode(new String [] {"Label", String.valueOf(id.charAt(0))});
-        int pc = callPC.storedPC(vm);
+//        LabelCode callPC = new LabelCode(new String [] {"Label", String.valueOf(id.charAt(0))});
+//        int pc = callPC.storedPC(vm);
 
-        if(vm.pop() == 0){
-            vm.setProgramCounter(pc - 1);
+        int tos = vm.pop();
+        if(tos == 0){
+            vm.setProgramCounter(location);
         }
     }
 
     @Override
     public String toString() {
-        return "FalseBranchCode " + id;
+        return "FALSEBRANCH " + id;
     }
 }

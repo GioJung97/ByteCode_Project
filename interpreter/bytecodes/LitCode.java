@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class LitCode implements ByteCode {
+public class LitCode implements ByteCode, dumpable {
 
     private String id;
     private int valueToPush;

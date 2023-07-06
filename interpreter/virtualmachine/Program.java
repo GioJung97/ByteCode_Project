@@ -63,21 +63,8 @@ public class Program {
 
         for(int i=1; i<getSize(); i++){
             ByteCode byteCode = this.program.get(i);
-                if(byteCode instanceof GotoCode){
-                    GotoCode gotoCode = (GotoCode) byteCode;
-                    String label = gotoCode.getId();
-                    int gotoValue = pass.get(label);
-                    gotoCode.setLocation(gotoValue);
-                }else if(byteCode instanceof FalseBranchCode){
-                    FalseBranchCode falseBranchCode = (FalseBranchCode) byteCode;
-                    String label = falseBranchCode.getId();
-                    int falseBranchValue = pass.get(label);
-                    falseBranchCode.setLocation(falseBranchValue);
-                }else if(byteCode instanceof CallCode){
-                    CallCode callCode = (CallCode) byteCode;
-                    String label = callCode.getId();
-                    int callValue = pass.get(label);
-                    callCode.setLocation(callValue);
+                if(byteCode instanceof jumpable){
+                    ((jumpable) byteCode).setLocation(pass.get(((jumpable) byteCode).getId()));
                 }
         }
 

@@ -4,7 +4,7 @@ import interpreter.virtualmachine.VirtualMachine;
 import interpreter.operators.Operator;
 
 
-public class BopCode implements ByteCode {
+public class BopCode implements ByteCode, dumpable {
 
     private String operator;
 

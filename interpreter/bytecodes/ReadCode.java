@@ -4,7 +4,7 @@ import interpreter.virtualmachine.VirtualMachine;
 
 import java.util.Scanner;
 
-public class ReadCode implements ByteCode {
+public class ReadCode implements ByteCode, dumpable {
 
     private int value;
 
@@ -19,14 +19,13 @@ public class ReadCode implements ByteCode {
             System.out.print("Please enter an integer: ");
             if (input.hasNextInt()) {
                 value = input.nextInt();
+                vm.push(value);
                 break;
             }else{
                 System.out.println("This input is Invalid.");
                 input.next();
             }
         }
-
-        vm.push(value);
     }
 
     @Override

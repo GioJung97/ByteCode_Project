@@ -104,7 +104,7 @@ class RunTimeStack {
      */
     public int load(int offsetFromFramePointer){
 
-        this.runTimeStack.add(this.framePointer.peek() + offsetFromFramePointer);
+        this.runTimeStack.add(runTimeStack.get(this.framePointer.peek() + offsetFromFramePointer));
 
         return this.peek();
     }
@@ -115,7 +115,7 @@ class RunTimeStack {
      * @param "offset" slots down from the top of the runtime stack
      * */
     public void newFrameAt(int offsetFromTopOfRunStack) {
-        this.framePointer.add(this.runTimeStack.size() - offsetFromTopOfRunStack);
+        this.framePointer.add(this.runTimeStack.size() - 1 - offsetFromTopOfRunStack);
     }
 
     /**
@@ -150,19 +150,24 @@ class RunTimeStack {
 
     public static void main(String[] args) /*throws InvalidProgramException*/ {
         RunTimeStack rts = new RunTimeStack();
-//        rts.push(2);
-//        rts.push(3);
-//        rts.push(1);
-//        rts.push(4);
-//        rts.push(5);
-
-//        rts.newFrameAt(1);
+        rts.push(2);
+        rts.push(3);
+        rts.push(1);
+        rts.push(4);
+        rts.push(5);
 
 
+
+        rts.newFrameAt(2);
+
+        rts.load(1);
         System.out.println(rts.dump());
 
-        rts.newFrameAt(0);
-        System.out.println(rts.dump());
+
+//        System.out.println(rts.dump());
+//
+//        rts.newFrameAt(0);
+//        System.out.println(rts.dump());
 
 
 //        rts.store(1);

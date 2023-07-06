@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class CallCode implements ByteCode {
+public class CallCode implements ByteCode, dumpable, jumpable {
 
     private String id;
     private int argVal;
@@ -34,18 +34,28 @@ public class CallCode implements ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        LabelCode callPC = new LabelCode(new String [] {"Label", String.valueOf(id.charAt(0))});
-        int pc = callPC.storedPC(vm);
+//        if(id.contains("<<")){
+//            LabelCode callPC = new LabelCode(new String [] {"Label", id});
+//            int pc = callPC.storedPC(vm);
+//
+//            vm.pushToReturnAddress();
+//            vm.setProgramCounter(pc);
+//            setStoredValue(vm.currFrameDump());
+//        }else{
+            vm.pushToReturnAddress();
+            vm.setProgramCounter(location);
+//        }
 
-        vm.pushToReturnAddress();
-        vm.setProgramCounter(pc - 1);
-        setStoredValue(vm.currFrameDump());
 
     }
 
     @Override
     public String toString() {
-        String base = "CALL " + id + "\t" + id.charAt(0) + getStoredValue();
+        String base = "CALL " + id + "\t" + id + "()";
+
+        if(id.contains("<<")){
+            base = "CALL " + id + "\t" + id.charAt(0) + getStoredValue();
+        }
 
         return base;
     }

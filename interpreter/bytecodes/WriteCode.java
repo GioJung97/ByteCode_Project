@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class WriteCode implements ByteCode {
+public class WriteCode implements ByteCode, dumpable {
     public WriteCode(String[] args) {
     }
 

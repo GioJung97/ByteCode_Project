@@ -1,6 +1,8 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecodes.ByteCode;
+import interpreter.bytecodes.DumpCode;
+import interpreter.bytecodes.dumpable;
 
 import java.util.Stack;
 
@@ -76,13 +78,14 @@ public class VirtualMachine {
 
         while (isRunning){
             ByteCode code = program.getCode(programCounter);
-            //if dumping is on, print out the code, print out the runtime dump
-            if(isDumping){
+
+            code.execute(this);
+
+            if(isDumping && code instanceof dumpable){
                 System.out.println(code);
                 System.out.println(this.runTimeStack.dump());
             }
 
-            code.execute(this);
             programCounter++;
         }
     }

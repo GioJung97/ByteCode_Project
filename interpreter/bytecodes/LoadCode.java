@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class LoadCode implements ByteCode {
+public class LoadCode implements ByteCode, dumpable {
 
     private int offset;
     private String id;
@@ -23,7 +23,7 @@ public class LoadCode implements ByteCode {
     public String toString() {
         String base = "LOAD " + this.offset;
         if(this.id != null){
-            base += " " + this.id + "\tload " + this.id;
+            base += " " + this.id + "\t<load " + this.id + ">";
         }
         return base;
     }

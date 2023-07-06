@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class LabelCode implements ByteCode {
+public class LabelCode implements ByteCode, dumpable {
 
     private String location;
     private int pc;

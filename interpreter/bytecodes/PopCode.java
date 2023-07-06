@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class PopCode implements ByteCode {
+public class PopCode implements ByteCode, dumpable {
 
     private int numAmountToPop;
 

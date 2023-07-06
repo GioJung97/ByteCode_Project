@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class StoreCode implements ByteCode {
+public class StoreCode implements ByteCode, dumpable {
 
     private String id;
     private int offset;

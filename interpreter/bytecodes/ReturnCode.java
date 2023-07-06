@@ -2,7 +2,7 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class ReturnCode implements ByteCode {
+public class ReturnCode implements ByteCode, dumpable {
 
     private String id;
     private int retVal;
@@ -31,7 +31,9 @@ public class ReturnCode implements ByteCode {
         setRetVal(vm.peek());
         setAddVal(vm.popReturnAddress());
         vm.popCurrFrameAndRTS();
-        vm.setProgramCounter(addVal - 1);
+
+        vm.push(retVal);
+        vm.setProgramCounter(addVal);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class ReturnCode implements ByteCode {
         String base = "RETURN";
 
         if (id != null){
-             base += id + "\t EXIT " + id.charAt(0) + " : " + getRetVal();
+             base += " " + id + "\t EXIT " + id.charAt(0) + " : " + getRetVal();
         }
         return base;
     }
