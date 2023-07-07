@@ -54,10 +54,6 @@ public class VirtualMachine {
         return this.runTimeStack.currFrameSize();
     }
 
-    public int currPC(){
-        return this.programCounter;
-    }
-
     public boolean setDumping(String onAndOff){
         if("ON".equals(onAndOff)){
             isDumping = true;

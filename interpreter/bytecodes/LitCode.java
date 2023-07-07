@@ -24,7 +24,7 @@ public class LitCode implements ByteCode, dumpable {
     public String toString(){
         String base = "LIT " + this.valueToPush;
         if(this.id != null){
-            base += " " + this.id + "\tint " + this.id;
+            base += "\tint " + this.id;
         }
         return base;
     }

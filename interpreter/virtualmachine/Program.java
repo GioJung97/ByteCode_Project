@@ -48,7 +48,7 @@ public class Program {
      * address for Goto,Call and FalseBranch bytecodes. These bytecodes
      * can only jump to Label codes that have a matching label value.
      * HINT: make note of what type of data-structure ByteCodes are stored in.
-     * **** METHOD SIGNATURE CANNOT BE CAHNGED *****
+     * **** METHOD SIGNATURE CANNOT BE CHANGED *****
      */
     public void resolveAddress() {
         HashMap <String, Integer> pass = new HashMap();

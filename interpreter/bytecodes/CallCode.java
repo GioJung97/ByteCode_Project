@@ -34,33 +34,19 @@ public class CallCode implements ByteCode, dumpable, jumpable {
 
     @Override
     public void execute(VirtualMachine vm) {
-        if(id.contains("<<")){
-//            LabelCode callPC = new LabelCode(new String [] {"Label", id});
-//            int pc = callPC.storedPC(vm);
-
-            vm.pushToReturnAddress();
-            vm.setProgramCounter(location);
-            setStoredValue(vm.currFrameDump());
-        }else{
-            vm.pushToReturnAddress();
-            vm.setProgramCounter(location);
-        }
-
-
+        vm.pushToReturnAddress();
+        vm.setProgramCounter(location);
+        setStoredValue(vm.currFrameDump());
     }
 
     @Override
     public String toString() {
+        String nameOfFunction = id.replaceAll("[^A-Za-z]+", "");
+        String base = "CALL " + nameOfFunction;
 
-        String base = "CALL " + id + "\t" + id + "()";
-
-        if(id.contains("<<")){
-            int endId = id.indexOf("<<");
-            base = "CALL " + id + "\t" + id.substring(0, endId) + getStoredValue();
+        if(getStoredValue() != null){
+            base = "CALL " + id + "\t" + nameOfFunction + getStoredValue();
         }
-//        else if(id.){
-//
-//        }
 
         return base;
     }

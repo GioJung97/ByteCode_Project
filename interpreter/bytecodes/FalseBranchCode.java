@@ -21,9 +21,6 @@ public class FalseBranchCode implements ByteCode, dumpable, jumpable {
 
     @Override
     public void execute(VirtualMachine vm) {
-//        LabelCode callPC = new LabelCode(new String [] {"Label", String.valueOf(id.charAt(0))});
-//        int pc = callPC.storedPC(vm);
-
         int tos = vm.pop();
         if(tos == 0){
             vm.setProgramCounter(location);

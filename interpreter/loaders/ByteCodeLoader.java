@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
-import java.util.Arrays;
 
 public final class ByteCodeLoader {
     private String codSourceFileName;
@@ -43,7 +41,6 @@ public final class ByteCodeLoader {
             while (reader.ready()){
                 line = reader.readLine();
                 items = line.split("\\s+");
-//                System.out.println(Arrays.toString(items));
                 byteCodeName = items[0];
                 bc = ByteCode.getNewInstance(byteCodeName, items);
                 program.addByteCode(bc);

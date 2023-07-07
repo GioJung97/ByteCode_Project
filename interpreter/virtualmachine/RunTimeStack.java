@@ -83,14 +83,9 @@ class RunTimeStack {
      * @param "offset" number of slots above current frame marker
      * * @return the item just stored
      */
-    public int store(int offsetFromFramePointer) /*throws InvalidProgramException*/ {
-
-//        if(offsetFromFramePointer == this.runTimeStack.size() - 1 - this.framePointer.peek()){
-//            throw new InvalidProgramException("Top of Stack is not allowed to be stored.");
-//        }
+    public int store(int offsetFromFramePointer){
 
         this.runTimeStack.set(this.framePointer.peek() + offsetFromFramePointer, this.peek());
-
 
         return this.runTimeStack.remove(this.runTimeStack.size() - 1);
     }
@@ -146,34 +141,6 @@ class RunTimeStack {
         sb.append(")");
 
         return sb.toString();
-    }
-
-    public static void main(String[] args) /*throws InvalidProgramException*/ {
-        RunTimeStack rts = new RunTimeStack();
-        rts.push(2);
-        rts.push(3);
-        rts.push(1);
-        rts.push(4);
-        rts.push(5);
-
-
-
-        rts.newFrameAt(1);
-
-//        rts.load(1);
-        System.out.println(rts.dump());
-        rts.popFrame();
-        System.out.println(rts.dump());
-
-
-//        System.out.println(rts.dump());
-//
-//        rts.newFrameAt(0);
-//        System.out.println(rts.dump());
-
-
-//        rts.store(1);
-//        rts.runTimeStack.forEach(v -> System.out.println(v));//Lambda expression
     }
 }
 

@@ -16,10 +16,6 @@ public class LabelCode implements ByteCode, dumpable {
 
     }
 
-    int storedPC(VirtualMachine vm){
-        return this.pc = vm.currPC();
-    }
-
     @Override
     public String toString() {
         return "LABEL " + location;

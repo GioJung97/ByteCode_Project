@@ -26,7 +26,6 @@ public class StoreCode implements ByteCode, dumpable {
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.store(offset);
         setStoredOffset(vm.store(offset));
     }
 
@@ -34,7 +33,7 @@ public class StoreCode implements ByteCode, dumpable {
     public String toString() {
         String base = "STORE " + this.offset;
         if (this.id != null){
-            base += " " + this.id + "\t" + this.id + "=" + getStoredOffset();
+            base += " " + this.id + "\t" + this.id + " = " + getStoredOffset();
         }
         return base;
     }
