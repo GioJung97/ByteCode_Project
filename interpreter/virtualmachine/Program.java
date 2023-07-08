@@ -53,7 +53,7 @@ public class Program {
     public void resolveAddress() {
         HashMap <String, Integer> pass = new HashMap();
 
-        for(int i=1; i<getSize(); i++){
+        for(int i=0; i<getSize(); i++){
             if(getCode(i).toString().startsWith("LABEL")){
                 String [] param = getCode(i).toString().split(" ");
                 String secondParam = param[1];
@@ -61,7 +61,7 @@ public class Program {
             }
         }
 
-        for(int i=1; i<getSize(); i++){
+        for(int i=0; i<getSize(); i++){
             ByteCode byteCode = this.program.get(i);
                 if(byteCode instanceof jumpable){
                     ((jumpable) byteCode).setLocation(pass.get(((jumpable) byteCode).getId()));

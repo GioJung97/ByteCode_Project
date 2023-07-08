@@ -1,6 +1,5 @@
 package interpreter.operators;
 
-import interpreter.InvalidTokenException;
 import java.util.HashMap;
 
 public abstract class Operator {
@@ -24,12 +23,6 @@ public abstract class Operator {
 
    }
 
-//    /**
-//     * retrieve the priority of an Operator
-//     * @return priority of an Operator as an int
-//     */
-//    public abstract int priority();
-
     /**
      * Abstract method to execute an operator given two operands.
      * @param operandOne first operand of operator
@@ -47,11 +40,7 @@ public abstract class Operator {
      * @return reference to a Operator instance.
      */
     public static Operator getOperator(String token) {
-        //check if the token is valid
-        if(!check(token)){
-            new InvalidTokenException();
-        }
-        //use switch case to call the proper operators
+
         switch (token){
             case "+":
                 return operators.get("+");
@@ -80,17 +69,6 @@ public abstract class Operator {
         }
 
         return operators.get(token);
-    }
-
-    
-     /**
-     * determines if a given token is a valid operator.
-     * please do your best to avoid static checks
-     * for example token.equals("+") and so on.
-     * Think about what happens if we add more operators.
-     */
-    public static boolean check(String token) {
-        return token.matches(".*[+\\-*/^].*");
     }
 
 }

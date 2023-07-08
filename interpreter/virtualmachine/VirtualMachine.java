@@ -1,7 +1,6 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecodes.ByteCode;
-import interpreter.bytecodes.DumpCode;
 import interpreter.bytecodes.dumpable;
 
 import java.util.Stack;
