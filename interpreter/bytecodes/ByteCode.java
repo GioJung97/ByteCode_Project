@@ -6,7 +6,7 @@ public interface ByteCode {
 
     void execute (VirtualMachine vm);
 
-    public String toString();
+    String toString();
 
     static ByteCode getNewInstance (String type, String[] args){
         return switch (type) {

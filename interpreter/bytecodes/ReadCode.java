@@ -6,14 +6,12 @@ import java.util.Scanner;
 
 public class ReadCode implements ByteCode, dumpable {
 
-    private int value;
-
     public ReadCode(String[] args) {
-        this.value = value;
     }
 
     @Override
     public void execute(VirtualMachine vm) {
+        int value;
         Scanner input = new Scanner (System.in);
         while (true) {
             System.out.print("Please enter an integer: ");
